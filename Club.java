@@ -9,14 +9,14 @@ public class Club
 {
     // Almacena los socios del club
     ArrayList<Membership> socios;
-    
+
     /**
      * Constructor for objects of class Club
      */
     public Club()
     {
         socios = new ArrayList<Membership>();
-        
+
     }
 
     /**
@@ -36,4 +36,35 @@ public class Club
     {
         return socios.size();
     }
+
+    /** 
+     * Calcula el numero de socios que se dieron de alta en un mes determinado. 
+     * El año no nos importa. En caso de que el parametro contenga un valor 
+     * no valido se muestra por pantalla el error.
+     * @param month El mes en el que estamos interesados
+     * @return El numero de socios que se dieron de alta dicho mes
+     */
+    public int joinedMonth(int month)
+    {
+        int numeroSocios = 0;
+        if (month<1 || month >12) //control de rango 
+        {
+            System.out.println("Has introducido un mes erroneo");
+        }
+        else
+        {
+            for(Membership socio : socios) //se recorre la coleccion de socios para comprobar
+            // el mes en el que entraron
+            {
+                if(socio.getMonth() == month) //si el mes introducido por parametro coincide
+                //con el mes del socio aumenta numeroSocios
+                {
+                    numeroSocios++;
+                }   
+            }
+        }
+        return numeroSocios;
+    }
+
+    
 }
