@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Provide a demonstration of the Club and Membership
  * classes.
@@ -10,13 +10,14 @@ public class ClubDemo
 {
     // instance variables - replace the example below with your own
     private Club club;
-
+   
     /**
      * Constructor for objects of class ClubDemo
      */
     public ClubDemo()
     {
         club = new Club();
+       
     }
 
     /**
@@ -33,4 +34,20 @@ public class ClubDemo
                            club.numberOfMembers() +
                            " members.");
     }
+    
+    /**
+     * Metodo de testeo
+     */
+    public void test1()
+    {
+       
+        club.join(new Membership("Juan",2,2004));
+        club.join(new Membership("Pepe",4,2003));
+        club.join(new Membership("Maria",4,2000));
+        club.join(new Membership("Ana",4,2000));
+        club.purge(4,2000);
+        
+        
+    }
+    
 }

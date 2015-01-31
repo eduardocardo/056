@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  * Store details of club memberships.
  * 
@@ -66,5 +67,35 @@ public class Club
         return numeroSocios;
     }
 
-    
+    /** 
+     * Todos los socios que se han dado de alta un determinado mes de un determinado año se
+     * dan de baja. En caso de que el parametro month contenga un valor no valido se muestra 
+     * por pantalla el error.
+     * @param month El mes en el que estamos interesados
+     * @param year El año en el que estamos interesados
+     * @return Una coleccion con los socios que se han dado de baja del club
+     */
+    public ArrayList purge(int month,int year)
+    {
+        ArrayList<Membership> sociosDeBaja = new ArrayList<>();
+        if(month<1 || month> 12) //control de rango
+        {
+            System.out.println("Has introducido un mes erroneo");
+            
+        }
+        else
+        {
+            Iterator<Membership> it = socios.iterator();
+            while(it.hasNext())
+            {
+                Membership socio = it.next();
+                if((socio.getMonth() == month) && (socio.getYear() == year)) //si los parametros coinciden con la fecha de alta de algun socio
+                {
+                    sociosDeBaja.add(socio);  //se añade el socio que se da de baja a la coleccion sociosDeBaja
+                    it.remove();  //se elimina de la coleccion socios
+                }
+            }
+        }
+        return sociosDeBaja;
+    }
 }
